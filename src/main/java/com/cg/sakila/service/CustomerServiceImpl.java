@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cg.sakila.entity.Address;
 import com.cg.sakila.entity.Customer;
 import com.cg.sakila.entity.myEntity;
+import com.cg.sakila.exception.CustomerNotFoundException;
 import com.cg.sakila.repository.CustomerRepository;
 
 
@@ -24,19 +25,35 @@ public class CustomerServiceImpl implements CustomerService {
 		return repo.findAll();
 	}
 	 @Override
-	    public List<Customer> findCustomersByLastName(String lastName) {
-	        return repo.findByLastName(lastName);
-	    }
+	 public List<Customer> findCustomersByLastName(String lastName) {
+		 List<Customer> allcustomers=repo.findByLastName(lastName);
+		 if(allcustomers.isEmpty()==true) {
+			 throw new CustomerNotFoundException("Customer with Lastname: "+lastName+",is not available");
+		 }
+		 return repo.findByLastName(lastName);
+	 }
 	 @Override
 	    public List<Customer> findCustomersByFirstName(String firstName) {
+		 List<Customer> allcustomers=repo.findByFirstName(firstName);
+		 if(allcustomers.isEmpty()==true) {
+			 throw new CustomerNotFoundException("Customer with firstname: "+firstName+",is not available");
+		 }
 	        return repo.findByFirstName(firstName);
 	    }
 	 @Override
-	    public Customer findCustomerByEmail(String email) {
-	        return repo.findByEmail(email);
-	    }
+	 public Customer findCustomerByEmail(String email) {
+		 Customer cust=repo.findByEmail(email);
+		 if(cust==null) {
+			 throw new CustomerNotFoundException("customer with email "+email+"is not found");
+		 }
+		 return repo.findByEmail(email);
+	 }
 	 @Override
 	    public List<Customer> getCustomersByCity(String city) {
+		 	List<Customer> customers=repo.findByAddress_City_City(city);
+		 	if(customers.isEmpty()==true) {
+		 		throw new CustomerNotFoundException("Customer with city"+city+"is not available");
+		 	}
 	        return repo.findByAddress_City_City(city);
 	    }
 	 @Override
@@ -51,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
 	 
 	 @Override
 	    public Customer assignAddressToCustomer(short customerId, Address address) {
-	        Customer customer = repo.findById(customerId).orElse(null);
+	        Customer customer = repo.findById(customerId).orElseThrow(()->new CustomerNotFoundException("customer with id"+customerId+ "is not available"));
 	        if (customer != null) {
 	            customer.setAddress(address);
 	            return repo.save(customer);
@@ -61,6 +78,10 @@ public class CustomerServiceImpl implements CustomerService {
 //city
 	 @Override
 	    public List<Customer> findInactiveCustomers() {
+//		 List<Customer> allcustomers=repo.findByActive(0);
+//		 if(allcustomers.isEmpty()==true) {
+//			 throw new CustomerNotFoundException("Customer with firstname: "+firstName+",is not available");
+//		 }
 	        return repo.findByActive(0);
 	    }
 	 
@@ -114,7 +135,7 @@ public class CustomerServiceImpl implements CustomerService {
 	    }
 	 @Override
 	    public Customer updateCustomerPhone(Short customerId, String phone) {
-	        Customer customer = repo.findById(customerId).orElse(null);
+	        Customer customer = repo.findById(customerId).orElseThrow(()->new CustomerNotFoundException("Customer with id"+customerId+"is not available"));
 	        if (customer != null) {
 	            Address address = customer.getAddress();
 	            if (address != null) {
