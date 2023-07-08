@@ -14,4 +14,10 @@ public class GlobalExceptionHandler {
 		ResponseEntity<String> res=new ResponseEntity<String>(cnfe.getMessage(),HttpStatus.NOT_FOUND);
 		return res;
 	}
+	
+	@ExceptionHandler(ActorNotFoundException.class)
+	public ResponseEntity<String> handleActorNotFoundException(ActorNotFoundException anfe){
+		ResponseEntity<String> res=new ResponseEntity<String>(anfe.getMessage(),HttpStatus.NOT_FOUND);
+		return res;
+	}
 }

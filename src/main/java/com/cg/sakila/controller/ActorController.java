@@ -72,26 +72,29 @@ public class ActorController {
 	}
 	
 	@PutMapping("/update/lastname/{id}")
-	public ResponseEntity<?> updateActorLastName(@PathVariable("id") Short id,
-          @RequestBody Map<String, String> requestBody) {
-      String newLastname = requestBody.get("newLastname");
-      if (newLastname == null) {
-          return ResponseEntity.badRequest().body("New Last name required");
-      }
-      actorService.updateActorLastName(id, newLastname);
-      return ResponseEntity.status(HttpStatus.OK).body("Last Name Updated Successfully");
+	public Actor updateActorLastName(@PathVariable("id") Short id,@RequestBody Actor actor) {
+		
+		Actor updatedActor = actorService.updateActorLastName(id,actor);
+		return updatedActor;
+//      String newLastname = requestBody.get("newLastname");
+//      if (newLastname == null) {
+//          return ResponseEntity.badRequest().body("New Last name required");
+//      }
+//      actorService.updateActorLastName(id, newLastname);
+//      return ResponseEntity.status(HttpStatus.OK).body("Last Name Updated Successfully");
   }
 	
 
 	@PutMapping("/update/firstname/{id}")
-	public ResponseEntity<?> updateActorFirstName(@PathVariable("id") Short id,
-			@RequestBody Map<String, String> requestBody) {
-		String newFirstname = requestBody.get("newFirstname");
-		if (newFirstname == null) {
-			return ResponseEntity.badRequest().body("New First name required");
-		}
-		actorService.updateActorFirstName(id, newFirstname);
-		return ResponseEntity.status(HttpStatus.OK).body("First name Updated Successfully");
+	public Actor updateActorFirstName(@PathVariable("id") Short id,@RequestBody Actor actor) {
+		Actor updateActor=actorService.updateActorFirstName(id, actor);
+		return updateActor;
+//		String newFirstname = requestBody.get("newFirstname");
+//		if (newFirstname == null) {
+//			return ResponseEntity.badRequest().body("New First name required");
+//		}
+//		actorService.updateActorFirstName(id, newFirstname);
+//		return ResponseEntity.status(HttpStatus.OK).body("First name Updated Successfully");
 	}
 
 	/*@GetMapping("/{id}/films")
@@ -111,12 +114,12 @@ public class ActorController {
 		return ResponseEntity.ok("Film successfully assigned to the actor.");
 	}*/
 	
-//	@GetMapping("/toptenbyfilmcount")
-//	public List<Object[]> getTopTenActorsByFilmCount() {
-////		List<Actor> actors = (List<Actor>) actorService.getTopTenActorsByFilmCount();
-////		ResponseEntity<List<Actor>> res=new ResponseEntity<List<Actor>>(actors,HttpStatus.OK);
-////		return res;
-//		return actorRepository.findTopTenActorsByFilmCount();
-//	}
+	@GetMapping("/toptenbyfilmcount")
+	public List<Object[]> getTopTenActorsByFilmCount() {
+		//List<Actor> actors = (List<Actor>) actorService.getTopTenActorsByFilmCount();
+		//ResponseEntity<List<Actor>> res=new ResponseEntity<List<Actor>>(actors,HttpStatus.OK);
+		//return res;
+		return actorService.getTopTenActorsByFilmCount();
+	}
 	
 }

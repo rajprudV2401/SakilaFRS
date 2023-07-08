@@ -16,4 +16,6 @@ public interface PaymentService {
 	//returned with object array by we have to change to DTO class
 	Collection<Object[]> calculateCumulativeRevenueOfAllStores();
 	//public Collection<Object[]> calculateCumulativeRevenueOfAllFilms();
+	
+    public List<Object[]> getPaymentsWithCumulativeRevenue(Byte storeId);
 }

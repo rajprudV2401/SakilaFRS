@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -97,5 +98,23 @@ public Collection<Object[]> calculateCumulativeRevenueOfAllStores(){
 	}
 	return cumulativeResults;
 	}
+
+
+@Override
+public List<Object[]> getPaymentsWithCumulativeRevenue(Byte storeId) {
+	 String jpqlQuery = "SELECT p.paymentDate, p.amount, s.storeId, " +
+             "(SELECT SUM(p2.amount) FROM Payment p2 JOIN p2.staff s2 JOIN s2.store st2 WHERE s2.storeId = :storeId AND p2.paymentDate <= p.paymentDate) AS cumulativeRevenue " +
+             "FROM Payment p " +
+             "JOIN p.staff s " +
+             "JOIN s.store st " +
+             "WHERE s.storeId = :storeId " +
+             "ORDER BY p.paymentDate";
+
+
+    TypedQuery<Object[]> query = entityManager.createQuery(jpqlQuery, Object[].class);
+    query.setParameter("storeId", storeId);
+
+    return query.getResultList();
+}
 }
     

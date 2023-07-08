@@ -52,4 +52,8 @@ public class PaymentController {
 //        return paymentService.calculateCumulativeRevenueOfAllFilms();
 //    }
     
+    @GetMapping("/{id}")
+    public List<Object[]> getStoreRevenueDatewise(@PathVariable("id") Byte storeId) {
+        return paymentService.getPaymentsWithCumulativeRevenue(storeId);
+    }
 }
