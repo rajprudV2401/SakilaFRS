@@ -41,7 +41,7 @@ public class StaffController {
 	 * staffService.fetchAllAddress();//error showing because this is not there in
 	 * StaffService }
 	 */
-	@GetMapping
+	@GetMapping("/all")
 	public List<Staff> fetchAll() {
 		return staffService.fetchAll();
 	}
@@ -107,10 +107,7 @@ public class StaffController {
 	//
 	@PutMapping("/update/fn/{id}")
 	public Staff updateStaffFirstName(@PathVariable byte id, @RequestBody Staff staff) {
-	    // Update the first name of the staff object
 	    staff.setFirstName(staff.getFirstName());
-
-	    // Pass the updated staff object to the service method
 	    return staffService.updateStaffFirstName(id, staff.getFirstName());
 	}
 
@@ -118,20 +115,13 @@ public class StaffController {
 	//
 	@PutMapping("/update/ln/{id}")
 	public Staff updateStaffLastName(@PathVariable byte id, @RequestBody Staff staff) {
-		// Update the last name of the staff object
 		staff.setLastName(staff.getLastName());
-
-		// Pass the updated staff object to the service method
 		return staffService.updateStaffLastName(id, staff.getLastName());
 	}
 
-	//
 	@PutMapping("/update/email/{id}")
 	public Staff updateStaffEmail(@PathVariable byte id, @RequestBody Staff staff) {
-	    // Update the email of the staff object
 	    staff.setEmail(staff.getEmail());
-
-	    // Pass the updated staff object to the service method
 	    return staffService.updateStaffEmail(id, staff.getEmail());
 	}
 

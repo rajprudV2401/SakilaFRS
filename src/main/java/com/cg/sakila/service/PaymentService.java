@@ -9,13 +9,7 @@ import com.cg.sakila.entity.PaymentDTO;
 
 public interface PaymentService {
 
-	//List<PaymentDTO> getPaymentSumByDate();
-	//List<Object[]> getPaymentSumBYDate();
-	
-	//List<PaymentDTO> getCumulativeRevenueByDate();
-	//returned with object array by we have to change to DTO class
 	Collection<Object[]> calculateCumulativeRevenueOfAllStores();
-	//public Collection<Object[]> calculateCumulativeRevenueOfAllFilms();
-	
     public List<Object[]> getPaymentsWithCumulativeRevenue(Byte storeId);
+    public List<Object[]> calculateCumulativeRevenueByDateAndStore(Byte storeId);
 }

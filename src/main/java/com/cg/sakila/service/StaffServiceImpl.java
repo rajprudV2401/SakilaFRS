@@ -126,15 +126,6 @@ public class StaffServiceImpl implements StaffService {
 	public void deleteStaff(byte id) {
 		staffRepository.deleteById(id);
 	}
-
-//	@Override
-//	public List<Staff> fetchAll() {
-//		List<Staff> staffs = staffRepository.findAll();
-//		staffs.forEach(staff -> staff.getAddress().getAddressId());
-//		staffs.forEach(staff -> staff.getAddress().getCityId());
-//		// Fetch the address association eagerly
-//		return staffs;
-//	}
 	
 	@Override
     public Staff getStaffById(byte staffId) {
@@ -153,13 +144,11 @@ public class StaffServiceImpl implements StaffService {
 		return null;
 	}
 	
-	
 	@Override
     public Staff addStaff(Staff staff) {
         return staffRepository.save(staff);
     }
 	
-	//-----------------------------------------
 	@Override
 	public Staff createStaff(Staff staff) {
 		return staffRepository.save(staff);
@@ -167,7 +156,7 @@ public class StaffServiceImpl implements StaffService {
 
 	@Override
 	public List<Staff> fetchAll() {
-		return null;
+		return staffRepository.findAll();
 	}
 
 

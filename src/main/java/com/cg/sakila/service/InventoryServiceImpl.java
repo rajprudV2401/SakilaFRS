@@ -26,8 +26,7 @@ public class InventoryServiceImpl implements InventoryService {
     public void addFilmToStore(Inventory inventory) {
         inventoryRepository.save(inventory);
     }
-	// ----------------------------------------------------
-
+	
 	@Override
 	public List<Inventory> getAllInventory() {
 		return inventoryRepository.findAll();
@@ -37,8 +36,7 @@ public class InventoryServiceImpl implements InventoryService {
 	public int getInventoryCountForFilm(Film film) {
 		return inventoryRepository.countByFilm(film);
 	}
-
-	// -------------------------------------------------------
+	
 	@Override
 	public List<Map<String, Object>> getInventoryByStoreId(Byte storeId) {
 		List<Inventory> inventoryList = inventoryRepository.findByStoreStoreId(storeId);
@@ -59,8 +57,6 @@ public class InventoryServiceImpl implements InventoryService {
 		return result;
 	}
 
-	// -----------------------------------------------------------------------
-	
     @Override
     public List<Map<String, Object>> getInventoryCountByFilmIdWithStoreAddress(Short filmId) {
         return inventoryRepository.getInventoryCountByFilmIdWithStoreAddress(filmId);

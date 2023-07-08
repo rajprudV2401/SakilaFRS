@@ -13,9 +13,9 @@ public interface ActorService {
 	Collection<Actor> findAllActors();
 	public Actor getActor(Short id);
 	Actor addActor(Actor actor);
-	//not yet
 	List<Object[]> getTopTenActorsByFilmCount();
 	Actor updateActorFirstName(Short id, Actor actor);
 	Actor updateActorLastName(Short id, Actor actor);
+	List<Film> getFilmsByActorId(Short actorId);
    
 }

@@ -24,15 +24,4 @@ public interface CustomerRepository  extends JpaRepository<Customer,Short>{
 	List<Customer> findByAddress_City_Country_Country(String country);
 	Customer findByAddressPhone(String phone);
 	
-////	@Query("SELECT new com.cg.sakila.entity.myEntity(c.first_name,c.last_name) from customer c")
-////	public List<myEntity> myFunction();
-//	
-////	@PersistenceContext 
-////	private EntityManager entity;
-////	public default List<Object[]> getCustomerInfo(){
-////		String query="SELECT c.firstName, c.lastName, a.addressId FROM Customer c JOIN c.address a";
-////		TypedQuery<Object[]> q=entity.createQuery(query,Object[].class);
-////		return q.getResultList();
-////	}
-	
 }

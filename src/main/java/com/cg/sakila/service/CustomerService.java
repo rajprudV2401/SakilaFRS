@@ -27,7 +27,4 @@ public interface CustomerService {
 	Customer addCustomer(Customer customer);
 	Customer saveCustomer(Customer customer);
 	
-	//public List<myEntity> getCustomerName();
-	
-	//public List<Object[]> getCustomerInfo();
 }

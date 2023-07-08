@@ -73,41 +73,25 @@ public class ActorController {
 	
 	@PutMapping("/update/lastname/{id}")
 	public Actor updateActorLastName(@PathVariable("id") Short id,@RequestBody Actor actor) {
-		
 		Actor updatedActor = actorService.updateActorLastName(id,actor);
 		return updatedActor;
-//      String newLastname = requestBody.get("newLastname");
-//      if (newLastname == null) {
-//          return ResponseEntity.badRequest().body("New Last name required");
-//      }
-//      actorService.updateActorLastName(id, newLastname);
-//      return ResponseEntity.status(HttpStatus.OK).body("Last Name Updated Successfully");
-  }
+	}
 	
-
 	@PutMapping("/update/firstname/{id}")
 	public Actor updateActorFirstName(@PathVariable("id") Short id,@RequestBody Actor actor) {
 		Actor updateActor=actorService.updateActorFirstName(id, actor);
 		return updateActor;
-//		String newFirstname = requestBody.get("newFirstname");
-//		if (newFirstname == null) {
-//			return ResponseEntity.badRequest().body("New First name required");
-//		}
-//		actorService.updateActorFirstName(id, newFirstname);
-//		return ResponseEntity.status(HttpStatus.OK).body("First name Updated Successfully");
 	}
-
-	/*@GetMapping("/{id}/films")
+	
+	@GetMapping("/{id}/films")
 	public ResponseEntity<List<Film>> getFilmsByActorId(@PathVariable("id") Short actorId) {
       List<Film> films = actorService.getFilmsByActorId(actorId);
       if (films.isEmpty()) {
           return ResponseEntity.notFound().build();
       }
       return ResponseEntity.ok(films);
-  }
-*/
+	}
 	
-
 	/*@PutMapping("{id}/film")
 	public ResponseEntity<String> assignFilmToActor(@PathVariable("id") Short actorId, @RequestBody Film film) {
 		actorService.assignFilmToActor(actorId, film);
@@ -116,9 +100,6 @@ public class ActorController {
 	
 	@GetMapping("/toptenbyfilmcount")
 	public List<Object[]> getTopTenActorsByFilmCount() {
-		//List<Actor> actors = (List<Actor>) actorService.getTopTenActorsByFilmCount();
-		//ResponseEntity<List<Actor>> res=new ResponseEntity<List<Actor>>(actors,HttpStatus.OK);
-		//return res;
 		return actorService.getTopTenActorsByFilmCount();
 	}
 	

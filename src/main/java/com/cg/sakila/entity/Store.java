@@ -45,8 +45,9 @@ public class Store {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@Column(name="last_update",nullable=false)
-	private Timestamp lastupdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastupdate;
 	
 	
 }

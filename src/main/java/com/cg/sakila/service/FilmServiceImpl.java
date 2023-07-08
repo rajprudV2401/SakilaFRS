@@ -37,7 +37,6 @@ public class FilmServiceImpl implements FilmService {
         this.filmCategoryRepository=filmCategoryRepository;
     }
     
-	
     @Override
     public Film createFilm(Film film) {
         return filmRepository.save(film);
@@ -94,8 +93,6 @@ public class FilmServiceImpl implements FilmService {
         return query.getResultList();
     }
     
-    
-    
     @Override
     public List<Film> findFilmsByRatingLessThan(String rating) {
         TypedQuery<Film> query = entityManager.createQuery(
@@ -116,77 +113,71 @@ public class FilmServiceImpl implements FilmService {
 	    public List<Film> getFilmsByLanguage(String language) {
 	        return filmRepository.findByLanguageName(language);
 	}
-	 
-	 
-	    //Update Title of a Film
-	    @Override
-	    public void updateFilmTitle(short id, String newTitle) {
-	        filmRepository.updateFilmTitleById(id, newTitle);
-	    }
-	    
-	    //Update Release Year of a Film
-	    @Override
-	    public void updateFilmReleaseYear(Short id, Integer newReleaseYear) {
-	        Film film = filmRepository.findById(id).orElseThrow();
-	        film.setReleaseYear(newReleaseYear);
-	        filmRepository.save(film);
-	    }
-	    
-	    //Update Rental Duration of a Film
-	    @Override
-	    public void updateFilmRentalDuration(Short id, Integer newRentalDuration) {
-	        Film film = filmRepository.findById(id).orElseThrow();
-	        film.setRentalDuration(newRentalDuration);
-	        filmRepository.save(film);
-	    }
-	    
-	    
-	    //Update Rental Rate of a Film
-	    @Override
-	    public void updateFilmRentalRate(Short id, Double newRentalRate) {
-	        Film film = filmRepository.findById(id).orElseThrow();
-	        film.setRentalRate(newRentalRate);
-	        filmRepository.save(film);
-	    }
-	    
-	  //Update Rating of a Film
-	    @Override
-	    public void updateFilmRating(Short id, String newRating) {
-	        Film film = filmRepository.findById(id).orElseThrow();
-	        film.setRating(newRating);
-	        filmRepository.save(film);
-	    }
-	    
-	    //Update Language of a Film
-	    @Override
-	    public void updateFilmLanguage(Short filmId, String languageName) {
-	        Film film = filmRepository.findById(filmId)
-	                .orElseThrow(() -> new IllegalArgumentException("Film not found with id: " + filmId));
+ 
+    //Update Title of a Film
+    @Override
+    public void updateFilmTitle(short id, String newTitle) {
+        filmRepository.updateFilmTitleById(id, newTitle);
+    }
+    
+    //Update Release Year of a Film
+    @Override
+    public void updateFilmReleaseYear(Short id, Integer newReleaseYear) {
+        Film film = filmRepository.findById(id).orElseThrow();
+        film.setReleaseYear(newReleaseYear);
+        filmRepository.save(film);
+    }
+    
+    //Update Rental Duration of a Film
+    @Override
+    public void updateFilmRentalDuration(Short id, Integer newRentalDuration) {
+        Film film = filmRepository.findById(id).orElseThrow();
+        film.setRentalDuration(newRentalDuration);
+        filmRepository.save(film);
+    }
+    
+    //Update Rental Rate of a Film
+    @Override
+    public void updateFilmRentalRate(Short id, Double newRentalRate) {
+        Film film = filmRepository.findById(id).orElseThrow();
+        film.setRentalRate(newRentalRate);
+        filmRepository.save(film);
+    }
+    
+    //Update Rating of a Film
+    @Override
+    public void updateFilmRating(Short id, String newRating) {
+        Film film = filmRepository.findById(id).orElseThrow();
+        film.setRating(newRating);
+        filmRepository.save(film);
+    }
+    
+    //Update Language of a Film
+    @Override
+    public void updateFilmLanguage(Short filmId, String languageName) {
+        Film film = filmRepository.findById(filmId)
+                .orElseThrow(() -> new IllegalArgumentException("Film not found with id: " + filmId));
 
-	        Language language = languageRepository.findByName(languageName);
-	        if (language == null) {
-	            throw new IllegalArgumentException("Language not found with name: " + languageName);
-	        }
+        Language language = languageRepository.findByName(languageName);
+        if (language == null) {
+            throw new IllegalArgumentException("Language not found with name: " + languageName);
+        }
 
-	        film.setLanguage(language);
-	        filmRepository.save(film);
-	    }
+        film.setLanguage(language);
+        filmRepository.save(film);
+    }
 
-	    
-	    //count film by year
-	    @Override
-	    public List<Object[]> countFilmsByYear() {
-	        return filmRepository.countFilmsByYear();
-	    }
+    
+    //count film by year
+    @Override
+    public List<Object[]> countFilmsByYear() {
+        return filmRepository.countFilmsByYear();
+    }
 
-		@Override
-		public Film getFilmById(Short filmId) {
-			return filmRepository.getById(filmId);
-		}
-		
-		
-
-		
-		
-		
+	@Override
+	public Film getFilmById(Short filmId) {
+		return filmRepository.getById(filmId);
+	}
+	
+	
 }

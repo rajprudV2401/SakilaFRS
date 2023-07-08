@@ -35,7 +35,8 @@ public class Country {
 	@Column(name="country",nullable=false)
 	private String country;
 	
-	@Column(name="last_update",nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdate;
 	
 }

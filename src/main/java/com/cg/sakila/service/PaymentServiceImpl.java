@@ -31,53 +31,6 @@ public class PaymentServiceImpl implements PaymentService {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-
-
-	
-
-//	@Override
-//	public List<PaymentDTO> getPaymentSumByDate() {
-//		paymentRepository.getPaymentSumByDate().forEach(System.out::print);
-//		return null;
-		
-		
-//		List<Object[]> results=paymentRepository.getPaymentSumByDate();
-//		List<PaymentDTO> dtos=new ArrayList<>();
-//		for(Object[] result: results) {
-//			PaymentDTO dto=new PaymentDTO();
-//			dto.setPaymentDate((Timestamp)result[0]);
-//			dto.setAmount((BigDecimal) result[1]);
-//			dto.setCumulativeSum((BigDecimal)result[2]);
-//			dtos.add(dto);
-//		}
-//		return dtos;
-		//return paymentRepository.getPaymentSumByDate();
-
-//	@Override
-//	public List<Object[]> getPaymentSumBYDate() {
-//		paymentRepository.getPaymentSumByDate();
-//	}
-	
-//    @Override
-//    public List<PaymentDTO> getCumulativeRevenueByDate() {
-//        List<Object[]> results = paymentRepository.getCumulativeRevenueByDate();
-//
-//        List<PaymentDTO> revenueList = new ArrayList<>();
-//        BigDecimal cumulativeRevenue = BigDecimal.ZERO;
-//
-//        for (Object[] result : results) {
-//            Timestamp paymentDate = (java.sql.Timestamp) result[0];
-//            BigDecimal amount = (BigDecimal) result[1];
-//            cumulativeRevenue = cumulativeRevenue.add(amount);
-//
-//            PaymentDTO revenueDTO = new PaymentDTO(cumulativeRevenue,paymentDate);
-//            revenueList.add(revenueDTO);
-//            
-//        }
-//
-//        return revenueList;
-//    }
-
 	
 public Collection<Object[]> calculateCumulativeRevenueOfAllStores(){
 	String query = "SELECT DATE(payment_date) AS payment_date, SUM(amount) AS amount " +
@@ -115,6 +68,10 @@ public List<Object[]> getPaymentsWithCumulativeRevenue(Byte storeId) {
     query.setParameter("storeId", storeId);
 
     return query.getResultList();
+}
+
+	public List<Object[]> calculateCumulativeRevenueByDateAndStore(Byte storeId) {
+		return paymentRepository.calculateCumulativeRevenueByDateAndStore(storeId);
 }
 }
     

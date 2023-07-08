@@ -111,8 +111,7 @@ public class FilmController {
     @GetMapping("/betweenyear/{from}/{to}")
     public List<Film> getFilmsReleasedBetweenYears(
             @PathVariable int from,
-            @PathVariable int to
-    ) {
+            @PathVariable int to) {
         return filmService.getFilmsReleasedBetweenYears(from, to);
     }
     

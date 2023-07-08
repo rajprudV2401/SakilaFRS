@@ -58,7 +58,7 @@ public class StoreServiceImpl implements StoreService {
 		return storeRepository.findByAddressCityCity(city);
 	}
 
-	// working
+	
 	@Override
 	public List<Store> getStoresByCountry(String country) {
 		return storeRepository.findByAddressCityCountryCountry(country);
@@ -68,7 +68,7 @@ public class StoreServiceImpl implements StoreService {
 	public Store getStoreByPhoneNumber(String phone) {
 		return storeRepository.findByAddressPhone(phone);
 	}
-//
+	
 	@Override
 	public void assignAddressToStore(byte storeId, Address address) {
 	    Store store = storeRepository.findByStoreId(storeId);
@@ -87,7 +87,7 @@ public class StoreServiceImpl implements StoreService {
 		}
 	}
 
-	// working
+	
 	@Override
 	public void assignManagerToStore(byte managerStaffId, Staff manager) {
 		Store store = findStoreByManagerStaffId(managerStaffId);
@@ -100,14 +100,7 @@ public class StoreServiceImpl implements StoreService {
 
 		return staffRepository.getByStoreStoreId(storeId);
 	}
-
-//	@Override
-//	public List<Customer> getAllCustomersByStoreId(byte storeId) {
-//
-//		return customerRepository.findCustomersByStoreId(storeId);
-//
-//	}
-
+	
 	@Override
 	public List<Staff> getManagerDetailsByStoreId(byte storeId) {
 		return staffRepository.findByStoreId(storeId);

@@ -33,8 +33,6 @@ public class ActorServiceImpl implements ActorService {
         return actorRepository.save(actor);
     }
     
-    
-
     @Override
     public List<Actor> findActorsByLastName(String lastName) {
     	List<Actor> actor = actorRepository.findByLastName(lastName);
@@ -59,12 +57,6 @@ public class ActorServiceImpl implements ActorService {
 		existingactor.setLastName(actor.getLastName());
 		existingactor.setLastUpdate(actor.getLastUpdate());
 		return actorRepository.save(existingactor);
-//		  Actor actor = actorRepository.findById(id).orElseThrow(()-> new ActorNotFoundException("Actor with ID: "+id+",not available to update"));
-//        if (actor != null) {
-//            actor.setLastName(lastName);
-//            return actorRepository.save(actor);
-//        }
-//        return null;
     }
 
     @Override
@@ -73,12 +65,6 @@ public class ActorServiceImpl implements ActorService {
 		existingactor.setFirstName(actor.getFirstName());
 		existingactor.setLastUpdate(actor.getLastUpdate());
 		return actorRepository.save(existingactor);
-//		  Actor actor = actorRepository.findById(id).orElseThrow(()-> new ActorNotFoundException("Actor with ID: "+id+",not available to update"));
-//        if (actor != null) {
-//            actor.setLastName(lastName);
-//            return actorRepository.save(actor);
-//        }
-//        return null;
     }
 
 	@Override
@@ -90,14 +76,13 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public List<Object[]> getTopTenActorsByFilmCount() {
     	 List<Object[]> results = actorRepository.findTopTenActorsByFilmCount();
-    	    
-//    	    List<Actor> topTenActors = results.stream()
-//    	            .map(row -> (Actor) row[0])
-//    	         
-//    	            .collect(Collectors.toCollection(ArrayList::new));
-    	    //System.out.println(topTenActors.size());
-    	    List<Object[]> firstTenElements = results.subList(0, 10);
-    	    return firstTenElements;
+    	 List<Object[]> firstTenElements = results.subList(0, 10);
+    	 return firstTenElements;
     }
+
+	@Override
+	public List<Film> getFilmsByActorId(Short actorId) {
+		return actorRepository.searchFilmsByActorId(actorId);
+	}
     
 }

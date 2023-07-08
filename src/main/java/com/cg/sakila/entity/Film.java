@@ -1,6 +1,7 @@
 package com.cg.sakila.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -74,8 +77,9 @@ public class Film {
 	@Column(name = "special_features",columnDefinition = "SET('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') DEFAULT NULL")
 	private String specialFeatures;
 	
-	@Column(name = "last_update", nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdate;
 
 	@ManyToMany
 	@JsonIgnore

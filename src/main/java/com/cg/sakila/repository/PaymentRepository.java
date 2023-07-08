@@ -90,4 +90,15 @@ public interface PaymentRepository extends JpaRepository<Payment,Integer> {
 //	        Query nativeQuery = entityManager.createNativeQuery(query);
 //	        return nativeQuery.getResultList();
 //	    }
+	 @Query(value = "SELECT p.paymentDate, SUM(p.amount) AS cumulative_revenue " +
+	            "FROM Payment p " +
+	            "INNER JOIN Rental r ON p.rentalId = r.rentalId " +
+	            "INNER JOIN Inventory i ON r.inventoryId = i.inventoryId " +
+	            "INNER JOIN store s ON i.storeId = s.storeId " +
+	            "WHERE s.storeId = :storeId " +
+	            "GROUP BY p.paymentDate " +
+	            "ORDER BY p.paymentDate",
+	            nativeQuery = true)
+    List<Object[]> calculateCumulativeRevenueByDateAndStore(@Param("storeId") Byte storeId);
+
 }

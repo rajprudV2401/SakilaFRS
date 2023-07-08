@@ -47,9 +47,6 @@ public class Actor {
 	@NotNull
 	private String lastName;
 	
-//	@Column(name="last_update")
-//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-//	private Timestamp lastUpdate;
 	@Column(name="last_update")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdate;

@@ -42,7 +42,8 @@ public class FilmCategory {
 	@JoinColumn(name="category_id")
 	private Category category;
 	
-	@Column(name="last_update",nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdate;
 	
 }

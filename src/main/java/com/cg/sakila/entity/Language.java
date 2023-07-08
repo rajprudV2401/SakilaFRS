@@ -45,6 +45,7 @@ public class Language {
 	@OneToMany(mappedBy = "originalLanguage")
 	private Set<Film> originalLanguageFilms;
 	
-	@Column(name="last_update",nullable=false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastUpdate;
 }

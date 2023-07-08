@@ -42,6 +42,7 @@ public class City {
 	@JoinColumn(name = "country_id")
 	private Country country;
 	
-	@Column(name="last_update",nullable=false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastUpdate;
 }

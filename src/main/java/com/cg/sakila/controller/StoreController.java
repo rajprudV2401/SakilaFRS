@@ -30,12 +30,6 @@ public class StoreController {
 		this.storeService = storeService;
 	}
 
-	//dummy
-	@GetMapping
-	public Map<Object, Object> stores() {
-		return storeService.findAllOfMyStore();
-	}
-
 	//working
 	@GetMapping("/address")
 	public List<Address> fetchAllAddress() {

@@ -30,30 +30,19 @@ public class PaymentController {
 		this.paymentService = paymentService;
 	}
 
-
-//	@GetMapping("/revenue/datewise")
-//	public List<PaymentDTO> getRevenueByDate() {
-//		return paymentService.getPaymentSumByDate();
-//	}
-//	
-//	 @GetMapping("/revenue/datewise")
-//	    public ResponseEntity<List<PaymentDTO>> getCumulativeRevenueByDate() {
-//	        List<PaymentDTO> revenue = paymentService.calculateCumulativeRevenueOfAllStores();
-//	        return ResponseEntity.ok(revenue);
-//	 }
-
 	@GetMapping("/revenue/datewise")
     public Collection<Object[]> getDatewiseRevenue() {
         return paymentService.calculateCumulativeRevenueOfAllStores();
     }
     
-//    @GetMapping("/revenue/filmwise")
-//    public Collection<Object[]> calculateCumulativeRevenueOfAllFilms() {
-//        return paymentService.calculateCumulativeRevenueOfAllFilms();
-//    }
-    
     @GetMapping("/{id}")
     public List<Object[]> getStoreRevenueDatewise(@PathVariable("id") Byte storeId) {
         return paymentService.getPaymentsWithCumulativeRevenue(storeId);
+    }
+    
+    @GetMapping("/revenue/datewise/store/{id}")
+    public ResponseEntity<List<Object[]>> getRevenueByDateAndStore(@PathVariable("id") Byte storeId) {
+        List<Object[]> revenueList = paymentService.calculateCumulativeRevenueByDateAndStore(storeId);
+        return ResponseEntity.ok(revenueList);
     }
 }

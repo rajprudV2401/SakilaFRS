@@ -53,10 +53,12 @@ public class Payment {
 	@Column(name="amount",nullable = false)
 	private BigDecimal amount;
 	
-	@Column(name="payment_date", nullable = false)
-	private Timestamp paymentDate;
+	@Column(name="payment_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date paymentDate;
 	
-	@Column(name="last_update", nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdate;
 	
 }

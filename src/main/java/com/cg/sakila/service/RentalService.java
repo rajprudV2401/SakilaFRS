@@ -16,9 +16,5 @@ public interface RentalService {
     Rental rentFilm(Rental rental);
     Rental updateReturnDate(Integer rentalId);
     String addRental(Rental rental);
-
-    //do some modifications on these
-//	List<Customer> getDueCustomer(long id);
-//  Rental updateReturnDate(Long id, Timestamp returnDate);
     
 }

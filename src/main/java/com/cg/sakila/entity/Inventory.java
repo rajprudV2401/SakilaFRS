@@ -43,7 +43,8 @@ public class Inventory {
 	@JoinColumn(name="store_id")
 	private Store store;
 	
-	@Column(name="last_update",nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastUpdate;
 	
 }

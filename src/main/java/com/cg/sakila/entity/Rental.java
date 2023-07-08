@@ -33,8 +33,9 @@ public class Rental {
 	@Column(name="rental_id")
 	private Integer rentalId;
 	
-	@Column(name="rental_date",nullable = false)
-	private Timestamp rentalDate;
+	@Column(name="rental_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date rentalDate;
 	
 	@ManyToOne
 	@JoinColumn(name="inventory_id")
@@ -45,12 +46,14 @@ public class Rental {
 	private Customer customer;
 	
 	@Column(name="return_date")
-	private Timestamp returnDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date returnDate;
 	
 	@ManyToOne
 	@JoinColumn(name="staff_id")
 	private Staff staff;
 	
-	@Column(name="last_update",nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastUpdate;
 }

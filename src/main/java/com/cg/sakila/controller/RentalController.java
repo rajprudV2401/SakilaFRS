@@ -68,12 +68,10 @@ public class RentalController {
     @PutMapping("/update/returndate/{id}")
     public ResponseEntity<Rental> updateReturnDate(@PathVariable("id") Integer rentalId) {
         Rental updatedRental = rentalService.updateReturnDate(rentalId);
-
         if (updatedRental != null) {
             return ResponseEntity.ok(updatedRental);
         }
-
-        return ResponseEntity.notFound().build(); // Rental not found
+        return ResponseEntity.notFound().build();
     }
     
     @PostMapping("/add")

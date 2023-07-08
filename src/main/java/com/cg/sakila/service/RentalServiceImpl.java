@@ -3,6 +3,7 @@ package com.cg.sakila.service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,12 @@ public class RentalServiceImpl implements RentalService {
 	    
 	    @Override
 	    public List<Film> getTopTenRentedFilms() {
-	        //return rentalRepository.findTop10RentedFilms();
+//	    	 List<Object[]> results = rentalRepository.findTop10MostRentedFilms();
+//
+//	         return results.stream()
+//	                 .limit(10)
+//	                 .map(row -> (Film) row[0])
+//	                 .collect(Collectors.toList());
 	    	return null;
 	    }
 	    @Override

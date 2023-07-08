@@ -193,14 +193,4 @@ public class CustomerController {
         }
     }
     
-//    @GetMapping("/info")
-//    public List<Object[]> getCustomerInfo(){
-//    	return customerservice.getCustomerInfo();
-//    }
-    
-//    @GetMapping("/dummy")
-//    public ResponseEntity<List<myEntity>> getName(){
-//    	return new ResponseEntity<List<myEntity>>(customerservice.getCustomerName(),HttpStatus.OK);
-//    }
-	
 }

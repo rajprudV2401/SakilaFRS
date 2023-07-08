@@ -63,6 +63,10 @@ public class CustomerServiceImpl implements CustomerService {
 
 	 @Override
 	    public List<Customer> findActiveCustomers() {
+		 List<Customer> allcustomers=repo.findByActive(1);
+		 if(allcustomers.isEmpty()==true) {
+			 throw new CustomerNotFoundException("No active customers are here");
+		 }
 	        return repo.findByActive(1);
 	    }
 	 
@@ -75,13 +79,13 @@ public class CustomerServiceImpl implements CustomerService {
 	        }
 	        return null;
 	    }
-//city
+	 
 	 @Override
 	    public List<Customer> findInactiveCustomers() {
-//		 List<Customer> allcustomers=repo.findByActive(0);
-//		 if(allcustomers.isEmpty()==true) {
-//			 throw new CustomerNotFoundException("Customer with firstname: "+firstName+",is not available");
-//		 }
+		 List<Customer> allcustomers=repo.findByActive(0);
+		 if(allcustomers.isEmpty()==true) {
+			 throw new CustomerNotFoundException("No inactive customers are here");
+		 }
 	        return repo.findByActive(0);
 	    }
 	 
@@ -156,12 +160,4 @@ public class CustomerServiceImpl implements CustomerService {
 	        return repo.save(customer);
 	    }
 		
-//	    public List<Object[]> getCustomerInfo(){
-//	    	return repo.getCustomerInfo();
-//	    }
-
-//	    @Override
-//	    public List<myEntity> getCustomerName(){
-//	    	return repo.myFunction();
-//	    }
 }

@@ -1,6 +1,7 @@
 package com.cg.sakila.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,10 +53,12 @@ public class Customer {
 	@Column(name = "active", nullable = false)
 	private int active;
 	
-    @Column(name = "create_date", nullable = false)
-    private Timestamp createDate;
+	@Column(name="create_update")
+	@Temporal(TemporalType.TIME)
+	private Date createDate;
     
-	@Column(name = "last_update", nullable = false)
-	private Timestamp lastUpdate;
+    @Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdate;
 	
 }

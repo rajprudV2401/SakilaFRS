@@ -45,8 +45,9 @@ public class FilmActor {
 	@JoinColumn(name="film_id")
 	private Film film;
 	
-	@Column(name="last_update",nullable = false)
-	private Timestamp lastUpdate;
+	@Column(name="last_update")
+	@Temporal(TemporalType.TIMESTAMP)
+	private java.util.Date lastUpdate;
 	
 	
 }

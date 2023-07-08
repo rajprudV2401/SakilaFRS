@@ -40,6 +40,13 @@ public class InventoryController {
 	        this.filmService=filmService;
 	} 	
 	
+	//working
+ 	@PostMapping("/add")
+    public ResponseEntity<String> addFilmToStore(@RequestBody Inventory inventory) {
+        inventoryService.addFilmToStore(inventory);
+        return ResponseEntity.ok("Record Created Successfully");
+    }
+ 	
 	//working.
 	@GetMapping("/films")
 	public List<Map<String, Object>> getAllInventoryOfFilms() {
@@ -60,54 +67,43 @@ public class InventoryController {
 	 	        inventoryData.put("totalCopies", totalCount);
 	 	        result.add(inventoryData);
 	 	    }
-
-	 	    return result;
-	 	}
-
+	 	 return result;
+	 }
 	    
-		//working.
-	    @GetMapping("/store/{id}")
-	    public ResponseEntity<List<Map<String, Object>>> getInventoryByStoreId(@PathVariable("id") Byte storeId) {
-	        List<Map<String, Object>> inventoryData = inventoryService.getInventoryByStoreId(storeId);
-	        return ResponseEntity.ok(inventoryData);
-	    }
+	//working.
+	@GetMapping("/store/{id}")
+	public ResponseEntity<List<Map<String, Object>>> getInventoryByStoreId(@PathVariable("id") Byte storeId) {
+	    List<Map<String, Object>> inventoryData = inventoryService.getInventoryByStoreId(storeId);
+	    return ResponseEntity.ok(inventoryData);
+	}
 	 	
-	    //working.
-	    @GetMapping("/film/{id}")
-	    public ResponseEntity<List<Map<String, Object>>> getInventoryCountByFilmIdWithStoreAddress(
-	            @PathVariable("id") Short filmId) {
-	        List<Map<String, Object>> inventoryData = inventoryService.getInventoryCountByFilmIdWithStoreAddress(filmId);
-	        return ResponseEntity.ok(inventoryData);
-	    }
+	//working.
+	@GetMapping("/film/{id}")
+	public ResponseEntity<List<Map<String, Object>>> getInventoryCountByFilmIdWithStoreAddress(
+	     @PathVariable("id") Short filmId) {
+		 List<Map<String, Object>> inventoryData = inventoryService.getInventoryCountByFilmIdWithStoreAddress(filmId);
+		 return ResponseEntity.ok(inventoryData);
+	}
 
-	    //dummy
-	   @GetMapping
-	    public List<Inventory> getAllInventory() {
-	        return inventoryService.getAllInventory();
-	    }
-	    
-	   
-	   //working
-	 	@PostMapping("/add")
-	    public ResponseEntity<String> addFilmToStore(@RequestBody Inventory inventory) {
-	        inventoryService.addFilmToStore(inventory);
-	        return ResponseEntity.ok("Record Created Successfully");
-	    }
-	 	//working
-	 	@GetMapping("/film/{filmId}/store/{storeId}")
-	 	public ResponseEntity<Map<String, String>> getInventoryCount(@PathVariable Short filmId, @PathVariable Byte storeId) {
-	 	    List<Object[]> inventoryCount = inventoryService.getInventoryCountByFilmAndStore(filmId, storeId);
-	 	    if (inventoryCount.isEmpty()) {
-	 	        return ResponseEntity.notFound().build();
-	 	    }
-	 	    String storeAddress = inventoryCount.get(0)[0].toString();
-	 	    String count = inventoryCount.get(0)[1].toString();
-	 	    
-	 	    Map<String, String> response = new HashMap<>();
-	 	    response.put("storeAddress", storeAddress);
-	 	    response.put("count", count);
-	 	    
-	 	    return ResponseEntity.ok(response);
+	//dummy
+	@GetMapping
+	public List<Inventory> getAllInventory() {
+	      return inventoryService.getAllInventory();
+	}
+	
+	 //working
+	 @GetMapping("/film/{filmId}/store/{storeId}")
+	 public ResponseEntity<Map<String, String>> getInventoryCount(@PathVariable Short filmId, @PathVariable Byte storeId) {
+	 	List<Object[]> inventoryCount = inventoryService.getInventoryCountByFilmAndStore(filmId, storeId);
+	 	if(inventoryCount.isEmpty()) {
+	 		return ResponseEntity.notFound().build();
 	 	}
+	 	String storeAddress = inventoryCount.get(0)[0].toString();
+	 	String count = inventoryCount.get(0)[1].toString();    
+	 	Map<String, String> response = new HashMap<>();
+	 	response.put("storeAddress", storeAddress);
+	 	response.put("count", count);    
+	 	return ResponseEntity.ok(response);
+	 }
 	    
 }
