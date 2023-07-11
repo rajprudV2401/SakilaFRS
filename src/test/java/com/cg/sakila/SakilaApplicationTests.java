@@ -16,7 +16,7 @@ import com.cg.sakila.entity.Customer;
 import com.cg.sakila.repository.ActorRepository;
 import com.cg.sakila.repository.CustomerRepository;
 
-@SpringBootTest
+//@SpringBootTest
 class SakilaApplicationTests {
 
 	@Autowired

@@ -82,6 +82,10 @@ public class ActorServiceImpl implements ActorService {
 
 	@Override
 	public List<Film> getFilmsByActorId(Short actorId) {
+		List<Film> allLists=actorRepository.searchFilmsByActorId(actorId);
+		if(allLists.isEmpty()==true) {
+			throw new ActorNotFoundException("no data available");
+		}
 		return actorRepository.searchFilmsByActorId(actorId);
 	}
     

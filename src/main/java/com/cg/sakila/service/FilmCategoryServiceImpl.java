@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FilmCategoryServiceImpl implements FilmCategoryService {
@@ -31,7 +32,7 @@ public class FilmCategoryServiceImpl implements FilmCategoryService {
 	        List<FilmCategory> filmCategories = filmCategoryRepository.findByCategoryName(category);
 	        return filmCategories.stream()
 	                .map(FilmCategory::getFilm)
-	                .toList();
+	                .collect(Collectors.toList());
 	    }
 
 

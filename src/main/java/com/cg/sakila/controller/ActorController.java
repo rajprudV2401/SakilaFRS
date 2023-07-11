@@ -92,12 +92,6 @@ public class ActorController {
       return ResponseEntity.ok(films);
 	}
 	
-	/*@PutMapping("{id}/film")
-	public ResponseEntity<String> assignFilmToActor(@PathVariable("id") Short actorId, @RequestBody Film film) {
-		actorService.assignFilmToActor(actorId, film);
-		return ResponseEntity.ok("Film successfully assigned to the actor.");
-	}*/
-	
 	@GetMapping("/toptenbyfilmcount")
 	public List<Object[]> getTopTenActorsByFilmCount() {
 		return actorService.getTopTenActorsByFilmCount();

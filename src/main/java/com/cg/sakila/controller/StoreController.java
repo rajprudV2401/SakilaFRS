@@ -107,7 +107,7 @@ public class StoreController {
 		List<Staff> managers = storeService.getManagerDetailsByStoreId(storeId);
 		return ResponseEntity.ok(managers);
 	}
-	
+	   
 	//working
 	@GetMapping("/managers")
 	public ResponseEntity<List<Staff>> getAllManagers() {

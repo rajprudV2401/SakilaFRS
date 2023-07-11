@@ -25,6 +25,6 @@ public interface RentalRepository extends JpaRepository<Rental,Long> {
 	
 	Rental findByRentalId(Integer rentalId);
 	
-	//@Query("SELECT r.film, COUNT(r) AS rentalCount FROM Rental r GROUP BY r.film ORDER BY rentalCount DESC")
-    //List<Object[]> findTop10MostRentedFilms();
+//	@Query("SELECT r.film, COUNT(r) AS rentalCount FROM Rental r GROUP BY r.film ORDER BY rentalCount DESC")
+//    List<Object[]> findTop10MostRentedFilms();
 }
