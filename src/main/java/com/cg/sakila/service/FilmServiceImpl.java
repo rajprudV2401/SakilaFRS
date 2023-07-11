@@ -1,6 +1,5 @@
 package com.cg.sakila.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -115,10 +114,10 @@ public class FilmServiceImpl implements FilmService {
 	}
  
     //Update Title of a Film
-    @Override
-    public void updateFilmTitle(short id, String newTitle) {
-        filmRepository.updateFilmTitleById(id, newTitle);
-    }
+//    @Override
+//    public void updateFilmTitle(short id, String newTitle) {
+//        filmRepository.updateFilmTitleById(id, newTitle);
+//    }
     
     //Update Release Year of a Film
     @Override
@@ -177,6 +176,20 @@ public class FilmServiceImpl implements FilmService {
 	@Override
 	public Film getFilmById(Short filmId) {
 		return filmRepository.getById(filmId);
+	}
+
+	@Override
+	public Film updateFilmTitleById(short id, Film film) {
+		Film existimgFilmTitle = getFilmById(id);
+		
+		existimgFilmTitle = film;
+		return filmRepository.save(existimgFilmTitle);
+	}
+
+	@Override
+	public void updateFilmTitle(short id, String newTitle) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

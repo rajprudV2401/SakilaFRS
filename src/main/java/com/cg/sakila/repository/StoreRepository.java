@@ -19,6 +19,7 @@ public interface StoreRepository extends JpaRepository<Store,Byte> {
 	List<Store> findByAddressCityCountryCountry(String countryName);
 	Store findByAddressPhone(String phone);
 	Store findByStoreId(byte id);
+	
 	@Query("SELECT c FROM Customer c JOIN Store s ON c.storeId = s.storeId WHERE s.storeId = :storeId")
     List<Customer> findCustomersByStoreId(@Param("storeId") Byte storeId);
 	

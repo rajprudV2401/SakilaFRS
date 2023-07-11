@@ -20,8 +20,6 @@ public interface StoreService {
 	void updateStorePhoneNumber(byte storeId, String phone);
 	void assignManagerToStore(byte storeId, Staff manager);
 	List<Staff> getAllStaffByStoreId(byte storeId);
-	//need query
-//	List<Customer> getAllCustomersByStoreId(byte storeId);
 	List<Staff> getManagerDetailsByStoreId(byte storeId);
 	List<Staff> getAllManagers();
 	List<Store> fetchAllStore();

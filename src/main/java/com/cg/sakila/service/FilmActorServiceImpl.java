@@ -40,7 +40,6 @@ public class FilmActorServiceImpl implements FilmActorService {
     	return filmActors.stream()
     			.map(FilmActor::getFilm)
     			.collect(Collectors.toList());
-//        return filmActorRepository.findByActorId(actorId);
     }
     
     

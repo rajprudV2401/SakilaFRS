@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface FilmCategoryRepository extends JpaRepository<FilmCategory, FilmCategoryId> {
-	//Find all Films of specified {category}
-    List<FilmCategory> findByCategoryName(String category);
+	
+	List<FilmCategory> findByCategoryName(String category);
 }

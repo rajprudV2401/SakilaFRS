@@ -29,9 +29,11 @@ public interface FilmRepository extends JpaRepository<Film,Short>{
     List<Film> findFilmsByRatingGreaterThan(String rating);
     List<Film> findByLanguageName(String language);
 	
+    /*
     @Modifying
     @Query("UPDATE Film f SET f.title = :newTitle WHERE f.id = :id")
     void updateFilmTitleById(short id, String newTitle);
+    */
     
     @Modifying
     @Query("UPDATE Film f SET f.language = :language WHERE f.id = :filmId")

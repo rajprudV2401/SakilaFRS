@@ -57,7 +57,6 @@ public class StaffServiceImpl implements StaffService {
 
 	@Override
 	public List<Staff> searchStaffByCity(String city) {
-
 		return staffRepository.findByAddressCityCity(city);
 	}
 
@@ -107,7 +106,6 @@ public class StaffServiceImpl implements StaffService {
 		if (staff != null) {
 			staff.setStore(store);
 			return staffRepository.save(staff);
-
 		}
 		return null;
 	}
@@ -140,7 +138,6 @@ public class StaffServiceImpl implements StaffService {
 
 	@Override
 	public Staff assignStoreToStaff(byte id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -158,6 +155,5 @@ public class StaffServiceImpl implements StaffService {
 	public List<Staff> fetchAll() {
 		return staffRepository.findAll();
 	}
-
 
 }

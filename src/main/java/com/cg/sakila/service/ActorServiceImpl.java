@@ -9,9 +9,7 @@ import com.cg.sakila.repository.ActorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ActorServiceImpl implements ActorService {

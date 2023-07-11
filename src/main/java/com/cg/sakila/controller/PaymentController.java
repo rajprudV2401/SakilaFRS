@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.sakila.entity.Payment;
-import com.cg.sakila.entity.PaymentDTO;
 import com.cg.sakila.service.PaymentService;
 
 @RestController

@@ -3,7 +3,6 @@ package com.cg.sakila.service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,27 +60,20 @@ public class RentalServiceImpl implements RentalService {
 	    @Override
 	    public Rental rentFilm(Rental rental) {
 	       rental.setRentalDate(new Timestamp(System.currentTimeMillis()));
-	       
 	       rental.setLastUpdate(new Timestamp(System.currentTimeMillis()));
-	       
-	       // Save the rental using the repository
 	       return rentalRepository.save(rental);
 	    }
-	    
 	    
 	    @Override
 	    public Rental updateReturnDate(Integer rentalId) {
 	        Rental rental = rentalRepository.findByRentalId(rentalId);
-
 	        if (rental != null) {
 	            rental.setReturnDate(Timestamp.valueOf(LocalDateTime.now()));
 	            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
 	            return rentalRepository.save(rental);
 	        }
-
 	        return null;
 	    }
-	    
 	    
 	    @Override
 	    public String addRental(Rental rental) {

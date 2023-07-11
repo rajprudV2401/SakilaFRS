@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.cg.sakila.entity.Payment;
-import com.cg.sakila.entity.PaymentDTO;
 
 public interface PaymentService {
 

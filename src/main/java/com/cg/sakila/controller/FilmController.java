@@ -149,7 +149,7 @@ public class FilmController {
 
     
     //Update Title of a Film
-    @PutMapping("/update/title/{id}")
+    /*@PutMapping("/update/title/{id}")
     public ResponseEntity<String> updateFilmTitle(@Valid @PathVariable("id") short id, @RequestBody Map<String, String> requestBody) {
         String newTitle = requestBody.get("newTitle");
         if (newTitle == null) {
@@ -158,6 +158,11 @@ public class FilmController {
 
         filmService.updateFilmTitle(id, newTitle);
         return ResponseEntity.status(HttpStatus.OK).body("Film title updated successfully");
+    }*/
+    
+    @PutMapping("update/title/{id}")
+    public Film updateFilmTitle(@Valid @PathVariable("id") short id, @RequestBody Film film) {
+    	return filmService.updateFilmTitleById(id, film);
     }
 
     //working

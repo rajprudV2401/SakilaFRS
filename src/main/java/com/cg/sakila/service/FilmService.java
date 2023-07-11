@@ -27,4 +27,6 @@ public interface FilmService {
 	void updateFilmLanguage(Short filmId, String languageName);
     List<Object[]> countFilmsByYear();
 	Film getFilmById(Short filmId);
+	
+	public Film updateFilmTitleById(short id,Film film);
 }

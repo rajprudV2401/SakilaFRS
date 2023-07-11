@@ -20,6 +20,7 @@ import com.cg.sakila.repository.AddressRepository;
 import com.cg.sakila.repository.CustomerRepository;
 import com.cg.sakila.repository.StaffRepository;
 import com.cg.sakila.repository.StoreRepository;
+import java.util.Collections;
 
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -52,7 +53,7 @@ public class StoreServiceImpl implements StoreService {
 		return store;
 	}
 
-	// working
+	
 	@Override
 	public List<Store> getStoresByCity(String city) {
 		return storeRepository.findByAddressCityCity(city);
@@ -76,7 +77,6 @@ public class StoreServiceImpl implements StoreService {
 	    addressRepository.save(address);
 	}
 
-
 	@Override
 	public void updateStorePhoneNumber(byte storeId, String phone) {
 		Optional<Store> storeOptional = storeRepository.findById(storeId);
@@ -87,17 +87,14 @@ public class StoreServiceImpl implements StoreService {
 		}
 	}
 
-	
 	@Override
 	public void assignManagerToStore(byte managerStaffId, Staff manager) {
 		Store store = findStoreByManagerStaffId(managerStaffId);
-
 		manager.setStore(store);
 	}
 
 	@Override
 	public List<Staff> getAllStaffByStoreId(byte storeId) {
-
 		return staffRepository.getByStoreStoreId(storeId);
 	}
 	
@@ -108,7 +105,6 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public List<Staff> getAllManagers() {
-
 		return staffRepository.allManagers();
 	}
 
@@ -132,12 +128,9 @@ public class StoreServiceImpl implements StoreService {
 	public Map<Object, Object> findAllOfMyStore() {
 		String jpql = "SELECT s.storeId, s.address.addressId, s.lastUpdate, s.staff.staffId FROM Store s";
 		TypedQuery<Object[]> query = entityManager.createQuery(jpql, Object[].class);
-
 		List<Object[]> objlist = query.getResultList();
 		Object[] arr = objlist.get(0);
-
 		Object[] objarr = { "store_id", "manager_staff_id", "last_update", "address_id" };
-
 		int count = 0;
 		HashMap<Object, Object> map = new HashMap<>();
 		for (Object obj : objarr) {
@@ -149,21 +142,17 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public List<Address> fetchAllAddress() {
 		List<Address> addresses = addressRepository.findAll();
-
 		return addresses;
-
 	}
 
 	@Override
 	public List<Staff> findAllStaff() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override
 	public List<Store> findAllStore() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 	
     public List<Customer> getCustomersByStoreId(Byte storeId) {
